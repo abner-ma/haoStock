@@ -1,0 +1,9 @@
+[Unit]
+Description=My get stock process
+
+[Service]
+Type=simple
+ExecStart=/root/haoStock/haoStock_deb/root/haoStock/mystart.sh /root/haoStock/haoStock_deb/root/haoStock
+
+[Install]
+WantedBy=multi-user.target

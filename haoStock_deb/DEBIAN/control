@@ -1,0 +1,6 @@
+Package:mygetstock
+Version:2017-04-05
+Architecture:i386
+Maintainer:abner_ma
+Provides:abner_ma
+Description:MY get stock process for ubuntu 16.04

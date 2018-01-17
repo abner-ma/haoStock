@@ -1,0 +1,5 @@
+#!/bin/bash
+
+chmod a+x /root/haoStock/haoStock_deb/root/haoStock/mystart.sh
+systemctl enable haoStock.timer
+systemctl start haoStock.timer

@@ -1,0 +1,9 @@
+[Unit]
+Description=My get stock process
+
+[Timer]
+OnCalendar=*-*-* 15:10:00
+Unit=haoStock.service
+
+[Install]
+WantedBy=multi-user.target
