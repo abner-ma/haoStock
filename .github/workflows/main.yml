@@ -37,15 +37,15 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
       - name: send email
-        use: devellany/send-mailer@v1.0.2
+        uses: devellany/send-mailer@v1.0.2
         with:
-        host: smtp.163.com
-        account: ${{secrets.MAIL_USERNAME}}
-        password: ${{secrets.MAIL_PASSWORD}}
-        sender: devellany
-        from: MY
-        to: 969023674@qq.com
-        subject: mail send test.
-        body: file://README.md
-        contentType: text/html
-        attachments: file://README.md
+          host: smtp.163.com
+          account: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          sender: devellany
+          from: MY
+          to: 969023674@qq.com
+          subject: mail send test.
+          body: file://README.md
+          contentType: text/html
+          attachments: file://README.md
