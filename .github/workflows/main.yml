@@ -36,16 +36,16 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: Send mailer
-        uses: devellany/send-mailer@v1.0.2
+     - name: 'Send mail'
+        uses: dawidd6/action-send-mail@master
         with:
-          host: smtp.163.com
-          account: ${{secrets.MAIL_USERNAME}}
-          password: ${{secrets.MAIL_PASSWORD}}
-          sender: mayue
-          from: ${{secrets.MAIL_USERNAME}}@163.com
-          to: 969023674@qq.com
-          subject: mail send test.
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          subject: MAIL send test
           body: file://README.md
-          contentType: text/html
-          attachments: file://README.md
+          to: 969023674@qq.com
+          from: ${{secrets.MAIL_USERNAME}}@163.com
+          content_type: text/html
+
