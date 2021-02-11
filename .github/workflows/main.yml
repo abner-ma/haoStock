@@ -26,6 +26,18 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Send email
+        uses: devellany/send-mail@v1.0.2
+        with:
+          host: smtp.163.com
+          account: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          sender: my
+          from: ${{secrets.MAIL_USERNAME}}@163.com
+          subject: Github Actions job result
+          body: file://README.md
+          attachments: '[{"path":"README.md"}]'
+          to: 969023674@qq.com
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -36,16 +48,3 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-      - name: 'Send mail'
-        uses: dawidd6/action-send-mail@master
-        with:
-          server_address: smtp.163.com
-          server_port: 465
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
-          subject: MAIL send test
-          body: file://README.md
-          to: 969023674@qq.com
-          from: ${{secrets.MAIL_USERNAME}}@163.com
-          content_type: text/html
-
