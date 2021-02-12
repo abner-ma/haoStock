@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ master ]
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '0 7 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   #workflow_dispatch:
@@ -26,6 +26,15 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+         # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
@@ -37,14 +46,6 @@ jobs:
           subject: Github Actions job result
           body: file://README.md
           attachments: '[{"path":"README.md"}]'
-          to: 969023674@qq.com
+          to: 969023674@qq.com;${{secrets.MAIL_USERNAME}}@163.com
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+     
