@@ -42,7 +42,7 @@ jobs:
           from: ${{secrets.MAIL_USERNAME}}@163.com
           subject: Github Actions job result
           body: file://cn/result.txt
-          attachments: '[{"path":"result.txt"}]'
-          to: 969023674@qq.com;${{secrets.MAIL_USERNAME}}@163.com
+          attachments: '[{"path":"cn/result.txt"}]'
+          to: ${{secrets.MAIL_LISTS}}
 
      
