@@ -28,9 +28,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup Python
         uses: actions/setup-python@v2.2.1
-        with:
-        # Version range or exact version of a Python version to use, using SemVer's version range syntax.
-        python-version: 3.x
       - name: check stock
         run: |
           cd cn
