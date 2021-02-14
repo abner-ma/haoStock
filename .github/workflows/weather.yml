@@ -1,0 +1,25 @@
+name: 'GitHub Actions Weather Bot'
+
+on:
+  push:
+  schedule:
+    - cron: '0 22 * * *'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Get Weather'
+        run: curl -H "Accept-Language: zh-CN" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" -o result.html \
+  wttr.in/Yuhuatai?format=4\&m
+      - name: 'Send mail'
+        use: devellany/send-mail@v1.0.2
+        with:
+          host: smtp.163.com
+          account: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          sender: my
+          from: ${{secrets.MAIL_USERNAME}}@163.com
+          subject: Github Actions job result
+          body: file://cn/result.html
+          to: ${{secrets.WEATHER_TO}}
