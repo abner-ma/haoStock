@@ -20,5 +20,5 @@ jobs:
           sender: my
           from: ${{secrets.MAIL_USERNAME}}@163.com
           subject: Github Actions job result
-          body: file://cn/result.html
+          body: file://result.html
           to: ${{secrets.WEATHER_TO}}
