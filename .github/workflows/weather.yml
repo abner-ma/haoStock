@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Get Weather'
-        run: curl -H "Accept-Language: zh-CN" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" -o result.html \
-  wttr.in/Yuhuatai?format=4\&m
+        run: curl -H "Accept-Language: zh-CN" -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36" -o result.html wttr.in/Yuhuatai?format=4\&m
       - name: 'Send mail'
         use: devellany/send-mail@v1.0.2
         with:
