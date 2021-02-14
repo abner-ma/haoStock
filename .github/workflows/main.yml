@@ -5,10 +5,10 @@ name: haoStock CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  #push:
+  #  branches: [ master ]
+  #pull_request:
+  #  branches: [ master ]
   schedule:
     - cron: '0 7 * * *'
 
@@ -40,8 +40,8 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           sender: my
           from: ${{secrets.MAIL_USERNAME}}@163.com
-          subject: Github Actions job result
-          body: file://cn/result.txt
+          subject: Today stock result from action
+          body: name代表股票名,turnover rate代表换手率,previous trading day close代表前一交易日收盘价,opening代表今日开盘价,price代表统计时的股价,StockCode代表股票代码
           attachments: '[{"path":"cn/result.txt"}]'
           to: ${{secrets.MAIL_LISTS}}
 
