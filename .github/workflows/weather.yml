@@ -8,13 +8,10 @@ on:
 jobs:
   bot:
     runs-on: ubuntu-latest
-    env: 
-      RESULT: test
     steps:
       - name: 'Get Weather'
         run: |
-          curl -o result.html wttr.in/Yuhuatai?format="%l+%c+%t+%w\n"
-          env.RESULT=${cat result.html}
+          curl -o result.html wttr.in/Yuhuatai?format=2&m
       - name: 'Send mail'
         uses: devellany/send-mail@v1.0.2
         with:
@@ -23,7 +20,7 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           sender: my
           from: ${{secrets.MAIL_USERNAME}}@163.com
-          subject: env.RESULT
+          subject: Yuhuatai weather
           body: file://result.html
           attachments: '[{"path":"result.html"}]'
           to: ${{secrets.WEATHER_TO}}
