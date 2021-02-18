@@ -3,14 +3,14 @@ name: 'GitHub Actions Weather Bot'
 on:
   push:
   schedule:
-    - cron: '0 22 * * *'
+    - cron: '0 23 * * *'
 
 jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
       - name: 'Get Weather'
-        run: curl -o result.html wttr.in/Yuhuatai
+        run: curl -o result.html wttr.in/Yuhuatai?format=3
       - name: 'Send mail'
         uses: devellany/send-mail@v1.0.2
         with:
@@ -19,7 +19,7 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           sender: my
           from: ${{secrets.MAIL_USERNAME}}@163.com
-          subject: Github Actions job result
+          subject: Today weather
           body: file://result.html
           attachments: '[{"path":"result.html"}]'
           to: ${{secrets.WEATHER_TO}}
