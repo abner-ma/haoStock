@@ -13,10 +13,10 @@ req = urllib.request.Request(url)
 resp = urllib.request.urlopen(req)
 response = resp.read()
 stockdate_str = response.split(str.encode('\"'))[1].split(str.encode('~'))[30]
-print(stockdate_str[0:8])
+print(stockdate_str[0:8].decode())
 print(today_str)
 
-if today_str == stockdate_str[0:8]:
+if today_str == stockdate_str[0:8].decode():
         exit(0)
 else:
         exit(1)
