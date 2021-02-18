@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'Get Weather'
-        run: curl -o result.html -H "Accept-Language: zh-cn" wttr.in/Yuhuatai?format=2
+        run: curl -o result.html wttr.in/Yuhuatai?format="%l+%c+%t+%w\n"
       - name: 'Send mail'
         uses: devellany/send-mail@v1.0.2
         with:
