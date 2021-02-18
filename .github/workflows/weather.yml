@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: 'Get Weather'
         run: |
-          curl -o result.html 'wttr.in/Yuhuatai?format=2&m'
+          curl -o result.html wttr.in/Yuhuatai?format=2\&m
       - name: 'Send mail'
         uses: devellany/send-mail@v1.0.2
         with:
