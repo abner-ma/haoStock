@@ -2,6 +2,8 @@ name: 'GitHub Actions Weather Bot'
 
 on:
   push:
+    paths:
+      - '.github/workflows/weather.yml'
   schedule:
     - cron: '0 3,10,23 * * *'
 
