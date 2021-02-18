@@ -3,7 +3,7 @@ name: 'GitHub Actions Weather Bot'
 on:
   push:
   schedule:
-    - cron: '0 23 * * *'
+    - cron: '0 3,10,23 * * *'
 
 jobs:
   bot:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: 'Get Weather'
         run: |
-          curl -o result.html wttr.in/Yuhuatai?format=2\&m
+          curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m
       - name: 'Send mail'
         uses: devellany/send-mail@v1.0.2
         with:
