@@ -7,7 +7,7 @@ MY_PROC=$WORK_DIR/main/main.py
 
 cd $WORK_DIR
 $PYTHON_CMD $VERIFY
-if [ $? = 1 ]
+if [ $? = 0 ]
 then
         $PYTHON_CMD $MY_PROC -o result.txt
 fi
