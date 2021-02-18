@@ -14,15 +14,14 @@ jobs:
       - name: 'Get Weather'
         run: |
           curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m
-      - name: 'Send mail'
-        uses: devellany/send-mail@v1.0.2
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v2
         with:
-          host: smtp.163.com
-          account: ${{secrets.MAIL_USERNAME}}
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          sender: my
-          from: ${{secrets.MAIL_USERNAME}}@163.com
           subject: Yuhuatai weather
           body: file://result.html
-          attachments: '[{"path":"result.html"}]'
           to: ${{secrets.WEATHER_TO}}
+          from: ${{secrets.MAIL_USERNAME}}@163.com
