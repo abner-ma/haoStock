@@ -24,4 +24,4 @@ jobs:
           subject: Yuhuatai Weather
           body: file://result.html
           to: ${{secrets.WEATHER_TO}}
-          from: <${{secrets.MAIL_USERNAME}}@163.com>
+          from: njuptgggzs
