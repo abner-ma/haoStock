@@ -19,7 +19,7 @@ jobs:
         with:
           server_address: smtp.163.com
           server_port: 465
-          username: ${{secrets.MAIL_USERNAME}}
+          username: ${{secrets.MAIL_USERNAME}}@163.com
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Yuhuatai Weather
           body: file://result.html
