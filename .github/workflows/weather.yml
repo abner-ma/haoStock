@@ -14,8 +14,8 @@ jobs:
       - name: 'Get Weather'
         run: |
           curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m
-          echo "weather_result=`cat result.html`" >> $GITHUB_ENV
-          echo "${{env.weather_result}}"
+          echo "weather_result=sun" >> $GITHUB_ENV
+          echo "${{ env.weather_result }}"
       - name: Send mail
         uses: dawidd6/action-send-mail@v2
         with:
