@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: 'Get Weather'
         run: |
-          curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m\&lang=zh-CN
+          curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m\&lang=zh-cn
           echo 'weather_result<<EOF' >> $GITHUB_ENV
           cat result.html >> $GITHUB_ENV
           echo 'EOF' >> $GITHUB_ENV
