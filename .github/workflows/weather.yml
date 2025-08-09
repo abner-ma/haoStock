@@ -5,12 +5,32 @@ on:
     paths:
       - '.github/workflows/weather.yml'
   schedule:
-    - cron: '7 5,10,23,12 * * *'
+    - cron: '0 5,10,23 * * *'
+
+permissions:
+  contents: write # 授予 Workflow 写权限以修改仓库内容
 
 jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
+      # 设置 Git 配置
+      - name: Setup Git
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+
+      # 更新 README 文件（示例：追加当前日期）
+      - name: Update README
+        run: |
+          echo "Last updated: $(date)" >> README.md
+
+      # 提交并推送更改
+      - name: Commit and push changes
+        run: |
+          git add README.md
+          git commit -m "Update README with latest timestamp"
+          git push
       - name: 'Get Weather'
         run: |
           curl -o result.html wttr.in/Yuhuatai?format="%C%f%w\n"\&m\&lang=zh-cn
