@@ -14,7 +14,10 @@ jobs:
   bot:
     runs-on: ubuntu-latest
     steps:
-      # 设置 Git 配置
+      # 检出仓库代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        # 设置 Git 配置
       - name: Setup Git
         run: |
           git config --global user.name "GitHub Action"
