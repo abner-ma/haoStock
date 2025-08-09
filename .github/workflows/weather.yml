@@ -23,16 +23,16 @@ jobs:
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
 
-      # 更新 README 文件（示例：追加当前日期）
-      - name: Update README
+      # 更新 update.md 文件（示例：追加当前日期）
+      - name: Update update.md
         run: |
-          echo "Last updated: $(date)" >> README.md
+          echo "Last updated: $(date)" > update.md
 
       # 提交并推送更改
       - name: Commit and push changes
         run: |
-          git add README.md
-          git commit -m "Update README with latest timestamp"
+          git add update.md
+          git commit -m "Update update.md with latest timestamp"
           git push
       - name: 'Get Weather'
         run: |
