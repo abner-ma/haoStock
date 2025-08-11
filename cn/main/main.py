@@ -32,11 +32,24 @@ def writetofile(outfile):
         req = urllib.request.Request(url)
         resp = urllib.request.urlopen(req)
         response = resp.read()
-        name = response.split(str.encode('\"'))[1].split(str.encode('~'))[1]
-        price = response.split(str.encode('\"'))[1].split(str.encode('~'))[3]
-        lastclose = response.split(str.encode('\"'))[1].split(str.encode('~'))[4]
-        opening = response.split(str.encode('\"'))[1].split(str.encode('~'))[5]
-        change=response.split(str.encode('\"'))[1].split(str.encode('~'))[38]
+        parts = response.split(str.encode('\"'))
+        if len(parts) > 1:
+            subparts = parts[1].split(str.encode('~'))
+            if len(subparts) > 38:
+                name = subparts[1]
+                price = subparts[3]
+                lastclose = subparts[4]
+                opening = subparts[5]
+                change= subparts[38]
+            # else:
+            #     print("Error: '~' not found in the response.")
+        # else:
+        #     print("Error: '\"' not found in the response.")
+        # name = response.split(str.encode('\"'))[1].split(str.encode('~'))[1]
+        # price = response.split(str.encode('\"'))[1].split(str.encode('~'))[3]
+        # lastclose = response.split(str.encode('\"'))[1].split(str.encode('~'))[4]
+        # opening = response.split(str.encode('\"'))[1].split(str.encode('~'))[5]
+        # change=response.split(str.encode('\"'))[1].split(str.encode('~'))[38]
         stockStr = name.decode('GBK')+','+change.decode()+','+lastclose.decode()+','+opening.decode()+','+price.decode()+','+strStockCode
         output.write(stockStr)
         #print(response.decode('hex'))
@@ -63,8 +76,9 @@ def main(argv=None):
             raise Usage(msg)
         parseparams(opts)
     except (Usage, err):
-        print >>sys.stderr, err.msg
-        print >>sys.stderr, "for help use --help"
+        pass
+        # print >>sys.stderr, err.msg
+        # print >>sys.stderr, "for help use --help"
         return 2
 
 if __name__ == "__main__":
