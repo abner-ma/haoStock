@@ -1,0 +1,27 @@
+# This is used to get chinatextbook's file and sendmail
+name: 'Download And Sendmail'
+
+on:
+  push:
+    paths:
+      - '.github/workflows/getfile.yml'
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Get file'
+        run: |
+          curl -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/TapXWorld/ChinaTextbook/contents/小学/语文/统编版/义务教育教科书·语文一年级上册.pdf > file.pdf
+      - name: Send email
+        uses: devellany/send-mail@v1.0.2
+        with:
+          host: smtp.163.com
+          account: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          sender: my
+          from: ${{secrets.MAIL_USERNAME}}@163.com
+          subject: 从github上获得的文件
+          body: 附件为从github上获得的文件
+          attachments: '[{"path":"file.pdf"}]'
+          to: ${{secrets.WEATHER_TO}}
