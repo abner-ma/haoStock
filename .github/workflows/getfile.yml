@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: 'Get file'
         run: |
-          curl -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/TapXWorld/ChinaTextbook/contents/小学/数学/苏教版/义务教育教科书·数学五年级上册.pdf > file.pdf
+          curl -H "Accept: application/vnd.github.v3.raw" https://api.github.com/repos/TapXWorld/ChinaTextbook/contents/小学/数学/苏教版/义务教育教科书·数学五年级下册.pdf > file.pdf
       - name: Send email
         uses: devellany/send-mail@v1.0.2
         with:
@@ -22,6 +22,6 @@ jobs:
           sender: my
           from: ${{secrets.MAIL_USERNAME}}@163.com
           subject: 从github上获得的文件
-          body: 附件为从github上获得的文件 数学/苏教版/义务教育教科书·数学五年级上册
+          body: 附件为从github上获得的文件 数学/苏教版/义务教育教科书·数学五年级下册
           attachments: '[{"path":"file.pdf"}]'
           to: ${{secrets.WEATHER_TO}}
